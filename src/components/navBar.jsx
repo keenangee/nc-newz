@@ -1,5 +1,6 @@
 import { AiOutlineCloseCircle, AiOutlineMenu } from "react-icons/ai";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,19 +12,27 @@ const NavBar = () => {
   return (
     <div className="flex justify-between items-center text-darkest h-24 max-w-[1240px] mx-auto px-6">
       <h1 className="w-full text-4xl font-bold text-primary">
-        {!isOpen ? "NCN" : ""}
+        <Link to="/">{!isOpen ? "NCN" : ""}</Link>
       </h1>
       <ul className="hidden md:flex">
-        <li className="text-2xl font-bold p-4">Home</li>
-        <li className="text-2xl font-bold p-4">Article</li>
-        <li className="text-2xl font-bold p-4">Topic</li>
-        <li className="text-2xl font-bold p-4">Users</li>
+        <li className="text-2xl font-bold p-4">
+          <a href="/">Home</a>
+        </li>
+        <li className="text-2xl font-bold p-4">
+          <a href="/articles">Articles</a>
+        </li>
+        <li className="text-2xl font-bold p-4">
+          <a href="/topics">Topics</a>
+        </li>
+        <li className="text-2xl font-bold p-4">
+          <a href="/users">Users</a>
+        </li>
       </ul>
       <div className="z-10 block md:hidden" onClick={handleOpen}>
         {!isOpen ? (
-          <AiOutlineMenu size={40} />
+          <AiOutlineMenu size={40} className=" cursor-pointer" />
         ) : (
-          <AiOutlineCloseCircle size={40} />
+          <AiOutlineCloseCircle size={40} className=" cursor-pointer" />
         )}
       </div>
       <div
@@ -36,10 +45,18 @@ const NavBar = () => {
         <h1 className="w-full text-4xl font-bold text-primary m-6">NCN</h1>
 
         <ul className="uppercase items-center flex flex-col justify-around pt-[15%]">
-          <li className="text-2xl font-bold px-4 py-12 border-b">Home</li>
-          <li className="text-2xl font-bold px-4 py-12 border-b">Article</li>
-          <li className="text-2xl font-bold px-4 py-12 border-b">Topic</li>
-          <li className="text-2xl font-bold px-4 py-12">Users</li>
+          <li className="text-2xl font-bold px-4 py-12 border-b">
+            <a href="/">Home</a>
+          </li>
+          <li className="text-2xl font-bold px-4 py-12 border-b">
+            <a href="/articles">Articles</a>
+          </li>
+          <li className="text-2xl font-bold px-4 py-12 border-b">
+            <a href="/topics">Topics</a>
+          </li>
+          <li className="text-2xl font-bold px-4 py-12">
+            <a href="/users">Users</a>
+          </li>
         </ul>
       </div>
     </div>

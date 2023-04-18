@@ -1,4 +1,5 @@
 import { RotatingLines } from "react-loader-spinner";
+import { Link } from "react-router-dom";
 
 const ArticleCard = ({ articles, isLoading }) => {
   const formatDate = (articleDate) => {
@@ -33,14 +34,18 @@ const ArticleCard = ({ articles, isLoading }) => {
               className="flex flex-col sm:flex-row border-b-2 border-dark py-10 justify-center items-center"
             >
               <div>
-                <img
-                  src={article.article_img_url}
-                  alt="article image"
-                  className="md:max-w-lg"
-                />
+                <Link to={`/articles/${article.article_id}`}>
+                  <img
+                    src={article.article_img_url}
+                    alt="article"
+                    className="md:max-w-lg"
+                  />
+                </Link>
               </div>
               <div className="text-darkest p-4">
-                <h3 className="font-bold underline py-2">{article.title}</h3>
+                <Link to={`/articles/${article.article_id}`}>
+                  <h3 className="font-bold underline py-2">{article.title}</h3>
+                </Link>
                 <p>by {article.author}</p>
                 <p>{formatDate(article.created_at)}</p>
                 <p>Topic: {article.topic}</p>
