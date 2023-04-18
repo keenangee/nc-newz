@@ -3,7 +3,7 @@ import Typed from "react-typed";
 const HeroMessage = () => {
   return (
     <header>
-      <div className="max-w-[800px] mt-10 w-full h-screen mx-auto text-center flex flex-col justify-start">
+      <div className="max-w-[800px] mt-10 w-full h-[40vw] mx-auto text-center flex flex-col justify-start">
         <h2 className="md:text-7xl sm:text-6xl text-3xl text-dark p-3">
           NC Newz
         </h2>
@@ -12,9 +12,9 @@ const HeroMessage = () => {
         </p>
         <div className="md:text-3xl sm:text-2xl text-l">
           <p className="text-dark p-3">
-            Get the news&nbsp;
+            The news&nbsp;
             <Typed
-              strings={["fast", "reliable", "accurate", "real"]}
+              strings={["fast", "reliable", "accurate", "real", "trustworthy"]}
               typeSpeed={120}
               backSpeed={140}
               loop={true}
