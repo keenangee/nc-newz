@@ -1,9 +1,12 @@
 import "./App.css";
+import HeroMessage from "./components/heroMessage";
+import NavBar from "./components/navBar";
 
 function App() {
   return (
-    <div className="App">
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
+    <div>
+      <NavBar />
+      <HeroMessage />
     </div>
   );
 }
