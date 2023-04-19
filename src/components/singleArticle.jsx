@@ -23,7 +23,9 @@ const SingleArticle = ({ setArticleName }) => {
         />
         <article className="flex flex-col px-2">
           <p className="my-auto">{article.body}</p>
-          <p className=" mt-auto">Written by: {article.author}</p>
+          <p className=" mt-auto pt-5 text-darkest">
+            Written by: {article.author}
+          </p>
         </article>
       </div>
       <div className="flex flex-row justify-around pt-10">
