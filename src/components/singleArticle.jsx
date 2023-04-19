@@ -2,11 +2,13 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import * as api from "../utils/api";
 import { RotatingLines } from "react-loader-spinner";
+import Comments from "./comments";
 
 const SingleArticle = ({ setArticleName }) => {
   const { article_id } = useParams();
   const [article, setArticle] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [commentsOpen, setCommentsOpen] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
@@ -16,6 +18,10 @@ const SingleArticle = ({ setArticleName }) => {
       setIsLoading(false);
     });
   }, [article_id, setArticleName]);
+
+  const handleComments = () => {
+    setCommentsOpen((currCommentsOpen) => !currCommentsOpen);
+  };
 
   return (
     <>
@@ -44,12 +50,23 @@ const SingleArticle = ({ setArticleName }) => {
           </p>
         </article>
       </div>
-      <div className="flex flex-row justify-around pt-10">
+
+      {commentsOpen && (
+        <div className="flex flex-col lg:flex-row lg:px-20 gap-10 lg:gap-5  text-textColor">
+          <Comments articleId={article_id} commentsOpen={commentsOpen} />
+        </div>
+      )}
+
+      <div className="flex flex-row justify-around">
         <div className=" bg-light hover:bg-dark px-4 py-2 border-s-5 border-primary border-2 rounded-lg">
           <p>votes: {article.votes}</p>
         </div>
         <div className=" bg-light hover:bg-dark px-4 py-2 border-s-5 border-primary border-2 rounded-lg">
-          <p>comments: {article.comment_count}</p>
+          <button onClick={handleComments}>
+            {commentsOpen
+              ? "close comments"
+              : `comments: ${article.comment_count}`}
+          </button>
         </div>
       </div>
     </>

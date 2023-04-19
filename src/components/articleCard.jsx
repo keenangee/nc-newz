@@ -1,18 +1,8 @@
 import { RotatingLines } from "react-loader-spinner";
 import { Link } from "react-router-dom";
+import { formatDate } from "../utils/utils";
 
 const ArticleCard = ({ articles, isLoading }) => {
-  const formatDate = (articleDate) => {
-    const date = new Date(articleDate);
-    const options = {
-      year: "numeric",
-      month: "numeric",
-      day: "numeric",
-    };
-    const dateFormatted = date.toLocaleDateString(undefined, options);
-    return dateFormatted;
-  };
-
   return (
     <div>
       {isLoading && (

@@ -52,7 +52,7 @@ const HeroMessage = ({ message, articleName }) => {
         <h2 className="md:text-7xl sm:text-6xl text-3xl text-dark p-3">
           {checkHeaderText(message)}
         </h2>
-        <p className="text-darkest font-bold md:text-4xl sm:text-3xl text-xl">
+        <p className="text-darkest font-bold md:pt-6 md:text-4xl sm:text-3xl text-xl">
           {checkContentText(message)}
         </p>
         <div className="md:text-3xl sm:text-2xl text-l">

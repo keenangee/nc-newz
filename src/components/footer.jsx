@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer className=" text-center py-5">
+    <footer className=" text-center pt-14 pb-6">
       <p>
         Created with{" "}
         <a
@@ -19,9 +19,9 @@ const Footer = () => {
           target={"_blank"}
         >
           Tailwind
-        </a>
+        </a>{" "}
+        © 2023
       </p>
-      <p>© 2023</p>
     </footer>
   );
 };
