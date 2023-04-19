@@ -47,8 +47,8 @@ const HeroMessage = ({ message, articleName }) => {
   };
 
   return (
-    <header>
-      <div className="max-w-[800px] mt-10 lg:pt-20 w-full h-[30vw] mx-auto text-center flex flex-col justify-start">
+    <header className=" pt-[10vh]">
+      <div className="max-w-[800px] w-full mx-auto text-center flex flex-col justify-start">
         <h2 className="md:text-7xl sm:text-6xl text-3xl text-dark p-3">
           {checkHeaderText(message)}
         </h2>
@@ -58,7 +58,7 @@ const HeroMessage = ({ message, articleName }) => {
         <div className="md:text-3xl sm:text-2xl text-l">
           {checkTypedText(message)}
         </div>
-        <div className="mt-8">
+        <div className="pt-8">
           <hr />
         </div>
       </div>

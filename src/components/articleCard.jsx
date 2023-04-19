@@ -33,16 +33,16 @@ const ArticleCard = ({ articles, isLoading }) => {
               key={article.article_id}
               className="flex flex-col sm:flex-row border-b-2 border-dark py-10 justify-center items-center"
             >
-              <div>
+              <div className="w-full sm:w-80 lg:w-96 flex-shrink-0 md:ml-20 lg:ml-48">
                 <Link to={`/articles/${article.article_id}`}>
                   <img
                     src={article.article_img_url}
                     alt="article"
-                    className="md:max-w-lg"
+                    className="w-full h-auto"
                   />
                 </Link>
               </div>
-              <div className="text-darkest p-4">
+              <div className="text-darkest flex-grow px-4 md:mr-20">
                 <Link to={`/articles/${article.article_id}`}>
                   <h3 className="font-bold underline py-2">{article.title}</h3>
                 </Link>

@@ -6,6 +6,7 @@ const Footer = () => {
         <a
           href="https://react.dev/"
           className=" text-darkest hover:text-primary"
+          rel="noreferrer noopener"
           target={"_blank"}
         >
           React
@@ -14,6 +15,7 @@ const Footer = () => {
         <a
           href="https://tailwindcss.com/"
           className=" text-darkest hover:text-primary"
+          rel="noreferrer noopener"
           target={"_blank"}
         >
           Tailwind

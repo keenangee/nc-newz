@@ -57,10 +57,10 @@ function App() {
         <Route
           path="/articles/:article_id"
           element={
-            <>
+            <div className="flex flex-col gap-12">
               <HeroMessage message="singleArticle" articleName={articleName} />
               <SingleArticle setArticleName={setArticleName} />
-            </>
+            </div>
           }
         />
       </Routes>
