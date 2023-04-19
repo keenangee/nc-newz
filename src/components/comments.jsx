@@ -1,6 +1,7 @@
 import * as api from "../utils/api";
 import { useEffect, useState } from "react";
 import { formatDate } from "../utils/utils";
+import { loading } from "../utils/utils";
 
 const Comments = ({ articleId, commentsOpen }) => {
   const [comments, setComments] = useState([]);
@@ -31,7 +32,7 @@ const Comments = ({ articleId, commentsOpen }) => {
   return (
     <div className="flex flex-col mx-6 text-dark border-4 border-double border-darkest">
       <div className="p-6">
-        {isLoading && <p>Loading...</p>}
+        {isLoading && loading()}
         <h3 className="text-center text-primary font-bold text-xl underline pb-5">
           Comments
         </h3>

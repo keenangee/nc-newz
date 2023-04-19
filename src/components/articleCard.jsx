@@ -1,21 +1,11 @@
-import { RotatingLines } from "react-loader-spinner";
 import { Link } from "react-router-dom";
 import { formatDate } from "../utils/utils";
+import { loading } from "../utils/utils";
 
 const ArticleCard = ({ articles, isLoading }) => {
   return (
     <div>
-      {isLoading && (
-        <div className="flex flex-row justify-center align-middle">
-          <RotatingLines
-            strokeColor="grey"
-            strokeWidth="5"
-            animationDuration="0.75"
-            width="96"
-            visible={true}
-          />
-        </div>
-      )}
+      {isLoading && loading()}
       <ul>
         {articles.map((article) => {
           return (
