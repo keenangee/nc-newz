@@ -7,10 +7,12 @@ import * as api from "./utils/api";
 import { useState, useEffect } from "react";
 import Home from "./components/home";
 import Footer from "./components/footer";
+import SingleArticle from "./components/singleArticle";
 
 function App() {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [articleName, setArticleName] = useState("");
   const [queries, setQueries] = useState({
     topic: [],
     sort_by: [],
@@ -54,7 +56,12 @@ function App() {
         />
         <Route
           path="/articles/:article_id"
-          element={<Articles articles={articles} isLoading={isLoading} />}
+          element={
+            <>
+              <HeroMessage message="singleArticle" articleName={articleName} />
+              <SingleArticle setArticleName={setArticleName} />
+            </>
+          }
         />
       </Routes>
       <Footer />

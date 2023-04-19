@@ -1,19 +1,23 @@
 import Typed from "react-typed";
 
-const HeroMessage = ({ message }) => {
+const HeroMessage = ({ message, articleName }) => {
   const checkHeaderText = (message) => {
     if (message === "home") {
       return "NC Newz";
-    } else {
+    } else if (message === "articles") {
       return "Articles";
+    } else if (message === "singleArticle") {
+      return articleName;
     }
   };
 
   const checkContentText = (message) => {
     if (message === "home") {
       return "Welcome to the realest news";
-    } else {
+    } else if (message === "articles") {
       return "All the news that's fit to print";
+    } else if (message === "singleArticle") {
+      return "🔻 Check out this article 🔻";
     }
   };
 

@@ -17,7 +17,7 @@ export const getArticles = async ({ topic, sort_by, order, author, limit }) => {
   return response.data.articles;
 };
 
-export const getSingleArticle = async (article_id) => {
+export const getArticleById = async (article_id) => {
   const response = await api.get(`/articles/${article_id}`);
   return response.data.article;
 };
