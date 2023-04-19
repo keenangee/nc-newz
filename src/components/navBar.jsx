@@ -16,16 +16,16 @@ const NavBar = () => {
       </h1>
       <ul className="hidden md:flex">
         <li className="text-2xl font-bold p-4">
-          <a href="/">Home</a>
+          <Link to="/">Home</Link>
         </li>
         <li className="text-2xl font-bold p-4">
           <a href="/articles">Articles</a>
         </li>
         <li className="text-2xl font-bold p-4">
-          <a href="/topics">Topics</a>
+          <Link to="/topics">Topics</Link>
         </li>
         <li className="text-2xl font-bold p-4">
-          <a href="/users">Users</a>
+          <Link to="/users">Users</Link>
         </li>
       </ul>
       <div className="z-10 block md:hidden" onClick={handleOpen}>
@@ -46,7 +46,9 @@ const NavBar = () => {
 
         <ul className="uppercase items-center flex flex-col justify-around pt-[15%]">
           <li className="text-2xl font-bold px-4 py-12 border-b">
-            <a href="/">Home</a>
+            <Link to="/" onClick={handleOpen}>
+              Home
+            </Link>
           </li>
           <li className="text-2xl font-bold px-4 py-12 border-b">
             <a href="/articles">Articles</a>
