@@ -31,3 +31,10 @@ export const getCommentsByArticleId = async (article_id, limit, p) => {
   });
   return response.data;
 };
+
+export const patchVotes = async (article_id, inc_votes) => {
+  const response = await api.patch(`/articles/${article_id}`, {
+    inc_votes,
+  });
+  return response.data.article;
+};
