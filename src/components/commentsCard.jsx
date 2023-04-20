@@ -53,8 +53,10 @@ const CommentsCard = ({
                     <p>{formatDate(comment.created_at)}</p>
                   </header>
                   <p>{comment.body}</p>
-                  <div className=" bg-light hover:bg-dark hover:text-textColor px-4 py-2 border-s-5 border-primary border-2 rounded-lg w-[100px] text-center mt-3">
-                    <p>votes: {comment.votes}</p>
+                  <div>
+                    <button className=" bg-light hover:bg-dark hover:text-textColor px-4 py-2 border-s-5 border-primary border-2 rounded-lg text-center mt-3">
+                      votes: {comment.votes}
+                    </button>
                   </div>
                   <br />
                   <hr />
