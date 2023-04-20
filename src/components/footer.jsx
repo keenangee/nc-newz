@@ -1,11 +1,12 @@
 const Footer = () => {
   return (
-    <footer className=" text-center py-5">
+    <footer className=" text-center pt-14 pb-6">
       <p>
         Created with{" "}
         <a
           href="https://react.dev/"
           className=" text-darkest hover:text-primary"
+          rel="noreferrer noopener"
           target={"_blank"}
         >
           React
@@ -14,12 +15,13 @@ const Footer = () => {
         <a
           href="https://tailwindcss.com/"
           className=" text-darkest hover:text-primary"
+          rel="noreferrer noopener"
           target={"_blank"}
         >
           Tailwind
-        </a>
+        </a>{" "}
+        © 2023
       </p>
-      <p>© 2023</p>
     </footer>
   );
 };

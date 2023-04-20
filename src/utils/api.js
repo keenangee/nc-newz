@@ -21,3 +21,13 @@ export const getArticleById = async (article_id) => {
   const response = await api.get(`/articles/${article_id}`);
   return response.data.article;
 };
+
+export const getCommentsByArticleId = async (article_id, limit, p) => {
+  const response = await api.get(`/articles/${article_id}/comments`, {
+    params: {
+      limit,
+      p,
+    },
+  });
+  return response.data;
+};

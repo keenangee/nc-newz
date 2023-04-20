@@ -1,21 +1,45 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import * as api from "../utils/api";
+import { RotatingLines } from "react-loader-spinner";
+import Comments from "./comments";
 
 const SingleArticle = ({ setArticleName }) => {
   const { article_id } = useParams();
   const [article, setArticle] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+  const [commentsOpen, setCommentsOpen] = useState(false);
+  const [totalComments, setTotalComments] = useState(0);
 
   useEffect(() => {
+    setIsLoading(true);
     api.getArticleById(article_id).then((article) => {
       setArticle(article);
       setArticleName(article.title);
+      setTotalComments(article.comment_count);
+      setIsLoading(false);
     });
-  }, [article_id]);
+  }, [article_id, setArticleName]);
+
+  const handleComments = () => {
+    setCommentsOpen((currCommentsOpen) => !currCommentsOpen);
+  };
 
   return (
     <>
-      <div className="flex flex-col lg:flex-row lg:px-20 gap-10 lg:gap-5 pt-40 sm:pt-40 md:pt-60 lg:pt40 xl:pt-20 text-textColor">
+      {isLoading && (
+        <div className="flex flex-row justify-center align-middle mt-40">
+          <RotatingLines
+            strokeColor="grey"
+            strokeWidth="5"
+            animationDuration="0.75"
+            width="96"
+            visible={true}
+          />
+        </div>
+      )}
+
+      <div className="flex flex-col lg:flex-row lg:px-20 gap-10 lg:gap-5  text-textColor">
         <img
           src={article.article_img_url}
           alt="article"
@@ -28,12 +52,30 @@ const SingleArticle = ({ setArticleName }) => {
           </p>
         </article>
       </div>
-      <div className="flex flex-row justify-around pt-10">
+
+      {commentsOpen && (
+        <div className="flex flex-col lg:flex-row lg:px-20 gap-10 lg:gap-5  text-textColor">
+          <Comments
+            articleId={article_id}
+            commentsOpen={commentsOpen}
+            totalComments={totalComments}
+            setTotalComments={setTotalComments}
+          />
+        </div>
+      )}
+
+      <div className="flex flex-row justify-around">
         <div className=" bg-light hover:bg-dark px-4 py-2 border-s-5 border-primary border-2 rounded-lg">
           <p>votes: {article.votes}</p>
         </div>
         <div className=" bg-light hover:bg-dark px-4 py-2 border-s-5 border-primary border-2 rounded-lg">
-          <p>comments: {article.comment_count}</p>
+          <button onClick={handleComments}>
+            {totalComments === 0
+              ? "Add Comment" //functionality to come
+              : commentsOpen
+              ? `Hide Comments`
+              : `Comments: ${totalComments}`}
+          </button>
         </div>
       </div>
     </>

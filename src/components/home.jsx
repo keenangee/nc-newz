@@ -8,7 +8,7 @@ const Home = ({ articles, isLoading, setQueries }) => {
 
   return (
     <div className="my-16 xs:my-12 sm:my-8 md:my-2 lg:my-0">
-      <h3 className="h-[8vh] text-2xl text-center text-primary font-bold underline italic md:mb-3 flex flex-col justify-center align-middle">
+      <h3 className="pt-10 text-2xl text-center text-primary font-bold underline italic md:mb-3 flex flex-col justify-center align-middle">
         Latest Articles
       </h3>
       <Articles articles={articles} isLoading={isLoading} />
