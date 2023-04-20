@@ -9,12 +9,14 @@ const SingleArticle = ({ setArticleName }) => {
   const [article, setArticle] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [commentsOpen, setCommentsOpen] = useState(false);
+  const [totalComments, setTotalComments] = useState(0);
 
   useEffect(() => {
     setIsLoading(true);
     api.getArticleById(article_id).then((article) => {
       setArticle(article);
       setArticleName(article.title);
+      setTotalComments(article.comment_count);
       setIsLoading(false);
     });
   }, [article_id, setArticleName]);
@@ -53,7 +55,12 @@ const SingleArticle = ({ setArticleName }) => {
 
       {commentsOpen && (
         <div className="flex flex-col lg:flex-row lg:px-20 gap-10 lg:gap-5  text-textColor">
-          <Comments articleId={article_id} commentsOpen={commentsOpen} />
+          <Comments
+            articleId={article_id}
+            commentsOpen={commentsOpen}
+            totalComments={totalComments}
+            setTotalComments={setTotalComments}
+          />
         </div>
       )}
 
@@ -63,9 +70,11 @@ const SingleArticle = ({ setArticleName }) => {
         </div>
         <div className=" bg-light hover:bg-dark px-4 py-2 border-s-5 border-primary border-2 rounded-lg">
           <button onClick={handleComments}>
-            {commentsOpen
-              ? "close comments"
-              : `comments: ${article.comment_count}`}
+            {totalComments === 0
+              ? "Add Comment" //functionality to come
+              : commentsOpen
+              ? `Hide Comments`
+              : `Comments: ${totalComments}`}
           </button>
         </div>
       </div>
