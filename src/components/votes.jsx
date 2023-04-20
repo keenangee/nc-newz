@@ -20,6 +20,7 @@ const Votes = ({
         setVotesOpen(false);
       })
       .catch((err) => {
+        setShowThumbsUp(false);
         setVotes((currVotes) => currVotes - 1);
         setErrMessage(true);
       });
@@ -38,6 +39,7 @@ const Votes = ({
         setVotesOpen(false);
       })
       .catch((err) => {
+        setShowThumbsDown(false);
         setVotes((currVotes) => currVotes + 1);
         setErrMessage(true);
         return;
