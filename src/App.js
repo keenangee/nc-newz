@@ -10,6 +10,7 @@ import Footer from "./components/footer";
 import SingleArticle from "./components/singleArticle";
 import UsersList from "./components/usersList";
 import NextPrev from "./components/nextPrev";
+import TopicsList from "./components/topicsList";
 
 function App() {
   const [articles, setArticles] = useState([]);
@@ -73,6 +74,15 @@ function App() {
               <HeroMessage message="singleArticle" articleName={articleName} />
               <SingleArticle setArticleName={setArticleName} />
             </div>
+          }
+        />
+        <Route
+          path="/topics"
+          element={
+            <>
+              <HeroMessage message="topics" />
+              <TopicsList />
+            </>
           }
         />
         <Route
