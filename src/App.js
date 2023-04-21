@@ -8,29 +8,35 @@ import { useState, useEffect } from "react";
 import Home from "./components/home";
 import Footer from "./components/footer";
 import SingleArticle from "./components/singleArticle";
+import UsersList from "./components/usersList";
+import NextPrev from "./components/nextPrev";
 
 function App() {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [articleName, setArticleName] = useState("");
+  const [page, setPage] = useState(1);
+  const [maxPage, setMaxPage] = useState(1);
   const [queries, setQueries] = useState({
     topic: [],
     sort_by: [],
     order: [],
     author: [],
     limit: [],
+    p: [],
   });
 
   useEffect(() => {
     api.getArticles(queries).then((articlesFromApi) => {
-      setArticles(articlesFromApi);
+      setArticles(articlesFromApi.articles);
+      setMaxPage(Math.ceil(articlesFromApi.total_count / 10));
       setIsLoading(false);
     });
   }, [queries]);
 
   return (
     <>
-      <NavBar />
+      <NavBar setPage={setPage} />
       <Routes>
         <Route
           path="/"
@@ -50,7 +56,13 @@ function App() {
           element={
             <>
               <HeroMessage message="articles" />{" "}
-              <Articles articles={articles} isLoading={isLoading} />
+              <Articles
+                articles={articles}
+                isLoading={isLoading}
+                setQueries={setQueries}
+                page={page}
+              />
+              <NextPrev page={page} setPage={setPage} maxPage={maxPage} />
             </>
           }
         />
@@ -61,6 +73,15 @@ function App() {
               <HeroMessage message="singleArticle" articleName={articleName} />
               <SingleArticle setArticleName={setArticleName} />
             </div>
+          }
+        />
+        <Route
+          path="/users"
+          element={
+            <>
+              <HeroMessage message="users" />
+              <UsersList />
+            </>
           }
         />
       </Routes>

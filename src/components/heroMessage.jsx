@@ -8,6 +8,10 @@ const HeroMessage = ({ message, articleName }) => {
       return "Articles";
     } else if (message === "singleArticle") {
       return articleName;
+    } else if (message === "topics") {
+      return "Topics";
+    } else if (message === "users") {
+      return "Users";
     }
   };
 
@@ -18,6 +22,10 @@ const HeroMessage = ({ message, articleName }) => {
       return "All the news that's fit to print";
     } else if (message === "singleArticle") {
       return "🔻 Check out this article 🔻";
+    } else if (message === "topics") {
+      return "All the topics you could ever want";
+    } else if (message === "users") {
+      return "Pick a user to become";
     }
   };
 

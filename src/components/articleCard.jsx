@@ -22,15 +22,15 @@ const ArticleCard = ({ articles, isLoading }) => {
                   />
                 </Link>
               </div>
-              <div className="text-darkest flex-grow px-4 md:mr-20">
+              <div className="text-darkest flex-grow px-4 w-[85vw] md:w-auto md:mr-20 text-center md:text-left">
                 <Link to={`/articles/${article.article_id}`}>
-                  <h3 className="font-bold underline py-2">{article.title}</h3>
+                  <h3 className="font-bold underline py-2 ">{article.title}</h3>
                 </Link>
                 <p>by {article.author}</p>
                 <p>{formatDate(article.created_at)}</p>
-                <p>Topic: {article.topic}</p>
                 <p>Votes: {article.votes}</p>
                 <p>Comments: {article.comment_count}</p>
+                <p>Topic: {article.topic}</p>
               </div>
             </li>
           );

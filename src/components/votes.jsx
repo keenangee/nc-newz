@@ -57,9 +57,13 @@ const Votes = ({
     <div className="fixed top-0 left-0 right-0 bottom-0 bg-gray-500 bg-opacity-50 flex items-center justify-center">
       <div className="bg-white p-6 rounded-lg">
         <p>
-          {!errMessage
-            ? "Do you want to upvote or downvote this article?"
-            : "Oops... Something went wrong, try again!"}
+          {!errMessage ? (
+            "Do you want to upvote or downvote this article?"
+          ) : (
+            <p className="text-red-500">
+              Oops... Something went wrong, try again!
+            </p>
+          )}
         </p>
         <div className="flex justify-center mt-4">
           <button

@@ -11,7 +11,11 @@ const Home = ({ articles, isLoading, setQueries }) => {
       <h3 className="pt-10 text-2xl text-center text-primary font-bold underline italic md:mb-3 flex flex-col justify-center align-middle">
         Latest Articles
       </h3>
-      <Articles articles={articles} isLoading={isLoading} />
+      <Articles
+        articles={articles}
+        isLoading={isLoading}
+        setQueries={setQueries}
+      />
       <div className="text-center pt-20">
         <a href="/articles">
           <button className="bg-primary text-lightest font-bold py-2 px-4 rounded text-center hover:text-light">

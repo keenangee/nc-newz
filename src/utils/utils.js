@@ -24,3 +24,17 @@ export const loading = () => {
     </div>
   );
 };
+
+export const loadingSmall = () => {
+  return (
+    <div className="flex flex-row justify-center align-middle">
+      <RotatingLines
+        strokeColor="grey"
+        strokeWidth="5"
+        animationDuration="0.75"
+        width="40"
+        visible={true}
+      />
+    </div>
+  );
+};

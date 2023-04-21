@@ -20,7 +20,7 @@ const CommentsCard = ({
       setIsLoading(false);
       setTotalComments(response.total_count);
     });
-  }, [articleId, limit]);
+  }, [articleId, limit, setTotalComments, totalComments]);
 
   useEffect(() => {
     if (!commentsOpen) {
@@ -35,12 +35,12 @@ const CommentsCard = ({
 
   return (
     <>
-      <div className="flex flex-col mx-6 text-dark border-4 border-double border-darkest">
+      <div>
         <div className="p-6">
-          {isLoading && loading()}
           <h3 className="text-center text-primary font-bold text-xl underline pb-5">
             Comments
           </h3>
+          {isLoading && loading()}
           <ul>
             {comments.map((comment) => {
               return (
@@ -67,15 +67,10 @@ const CommentsCard = ({
           {totalComments > limit && (
             <div className="text-center">
               <button className="hover:text-textColor" onClick={handleLoadMore}>
-                Load more...
+                {isLoading ? "" : "Load more..."}
               </button>
             </div>
           )}
-        </div>
-        <div className="text-center py-6">
-          <button className="underline font-bold hover:text-textColor">
-            add comment
-          </button>
         </div>
       </div>
     </>
