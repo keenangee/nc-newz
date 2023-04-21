@@ -4,12 +4,16 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../context/users";
 
-const NavBar = () => {
+const NavBar = ({ setPage }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { signedInUser } = useContext(UserContext);
 
   const handleOpen = () => {
     setIsOpen(!isOpen);
+  };
+
+  const handleArticlePage = () => {
+    setPage(1);
   };
 
   return (
@@ -22,7 +26,9 @@ const NavBar = () => {
           <Link to="/">Home</Link>
         </li>
         <li className="text-2xl font-bold p-4">
-          <Link to="/articles">Articles</Link>
+          <Link to="/articles" onClick={handleArticlePage}>
+            Articles
+          </Link>
         </li>
         <li className="text-2xl font-bold p-4">
           <Link to="/topics">Topics</Link>
@@ -54,7 +60,13 @@ const NavBar = () => {
             </Link>
           </li>
           <li className="text-2xl font-bold px-4 py-12 border-b">
-            <Link to="/articles" onClick={handleOpen}>
+            <Link
+              to="/articles"
+              onClick={() => {
+                handleOpen();
+                handleArticlePage();
+              }}
+            >
               Articles
             </Link>
           </li>

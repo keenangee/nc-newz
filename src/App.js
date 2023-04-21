@@ -36,7 +36,7 @@ function App() {
 
   return (
     <>
-      <NavBar />
+      <NavBar setPage={setPage} />
       <Routes>
         <Route
           path="/"
