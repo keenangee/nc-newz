@@ -41,7 +41,10 @@ const NavBar = ({ setPage }) => {
         {!isOpen ? (
           <AiOutlineMenu size={40} className=" cursor-pointer" />
         ) : (
-          <AiOutlineCloseCircle size={40} className=" cursor-pointer" />
+          <AiOutlineCloseCircle
+            size={40}
+            className=" cursor-pointer fixed top-7 right-7"
+          />
         )}
       </div>
       <div

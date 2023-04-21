@@ -63,3 +63,8 @@ export const postComment = async (article_id, username, body) => {
   });
   return response.data.comment;
 };
+
+export const getTopics = async () => {
+  const response = await api.get("/topics");
+  return response.data.topics;
+};
