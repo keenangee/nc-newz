@@ -18,13 +18,18 @@ const SingleArticle = ({ setArticleName }) => {
 
   useEffect(() => {
     setIsLoading(true);
-    api.getArticleById(article_id).then((article) => {
-      setArticle(article);
-      setArticleName(article.title);
-      setTotalComments(article.comment_count);
-      setVotes(article.votes);
-      setIsLoading(false);
-    });
+    api
+      .getArticleById(article_id)
+      .then((article) => {
+        setArticle(article);
+        setArticleName(article.title);
+        setTotalComments(article.comment_count);
+        setVotes(article.votes);
+        setIsLoading(false);
+      })
+      .then(() => {
+        setIsLoading(false);
+      });
   }, [article_id, setArticleName]);
 
   const handleComments = () => {

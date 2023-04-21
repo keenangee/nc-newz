@@ -1,9 +1,12 @@
 import { AiOutlineCloseCircle, AiOutlineMenu } from "react-icons/ai";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../context/users";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { signedInUser } = useContext(UserContext);
 
   const handleOpen = () => {
     setIsOpen(!isOpen);
@@ -19,13 +22,13 @@ const NavBar = () => {
           <Link to="/">Home</Link>
         </li>
         <li className="text-2xl font-bold p-4">
-          <a href="/articles">Articles</a>
+          <Link to="/articles">Articles</Link>
         </li>
         <li className="text-2xl font-bold p-4">
           <Link to="/topics">Topics</Link>
         </li>
-        <li className="text-2xl font-bold p-4">
-          <Link to="/users">Users</Link>
+        <li className="text-2xl font-bold p-4 w-fit text-primary">
+          <Link to="/users">{signedInUser}</Link>
         </li>
       </ul>
       <div className="z-10 block md:hidden" onClick={handleOpen}>
@@ -51,13 +54,19 @@ const NavBar = () => {
             </Link>
           </li>
           <li className="text-2xl font-bold px-4 py-12 border-b">
-            <a href="/articles">Articles</a>
+            <Link to="/articles" onClick={handleOpen}>
+              Articles
+            </Link>
           </li>
           <li className="text-2xl font-bold px-4 py-12 border-b">
-            <a href="/topics">Topics</a>
+            <Link to="/topics" onClick={handleOpen}>
+              Topics
+            </Link>
           </li>
-          <li className="text-2xl font-bold px-4 py-12">
-            <a href="/users">Users</a>
+          <li className="text-2xl font-bold px-4 py-12 text-primary">
+            <Link to="/users" onClick={handleOpen}>
+              {signedInUser}
+            </Link>
           </li>
         </ul>
       </div>
