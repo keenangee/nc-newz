@@ -1,5 +1,5 @@
 import { AiOutlineCloseCircle, AiOutlineMenu } from "react-icons/ai";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../context/users";
@@ -7,6 +7,14 @@ import { UserContext } from "../context/users";
 const NavBar = ({ setPage }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { signedInUser } = useContext(UserContext);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [isOpen]);
 
   const handleOpen = () => {
     setIsOpen(!isOpen);
