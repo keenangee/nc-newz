@@ -11,6 +11,8 @@ import SingleArticle from "./components/singleArticle";
 import UsersList from "./components/usersList";
 import NextPrev from "./components/nextPrev";
 import TopicsList from "./components/topicsList";
+import SortBy from "./components/sortBy";
+import TopicPage from "./components/topicPage";
 
 function App() {
   const [articles, setArticles] = useState([]);
@@ -18,6 +20,7 @@ function App() {
   const [articleName, setArticleName] = useState("");
   const [page, setPage] = useState(1);
   const [maxPage, setMaxPage] = useState(1);
+  const [topicQuery, setTopicQuery] = useState("");
   const [queries, setQueries] = useState({
     topic: [],
     sort_by: [],
@@ -56,7 +59,8 @@ function App() {
           path="/articles"
           element={
             <>
-              <HeroMessage message="articles" />{" "}
+              <HeroMessage message="articles" />
+              <SortBy setQueries={setQueries} />
               <Articles
                 articles={articles}
                 isLoading={isLoading}
@@ -82,6 +86,22 @@ function App() {
             <>
               <HeroMessage message="topics" />
               <TopicsList />
+            </>
+          }
+        />
+        <Route
+          path="/topics/:topic"
+          element={
+            <>
+              <HeroMessage message="topicPage" topicQuery={topicQuery} />
+              <TopicPage
+                articles={articles}
+                isLoading={isLoading}
+                setQueries={setQueries}
+                setTopicQuery={setTopicQuery}
+                page={page}
+              />
+              <NextPrev page={page} setPage={setPage} maxPage={maxPage} />
             </>
           }
         />

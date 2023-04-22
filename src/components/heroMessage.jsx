@@ -1,6 +1,16 @@
 import Typed from "react-typed";
+import { useState, useEffect } from "react";
 
-const HeroMessage = ({ message, articleName }) => {
+const HeroMessage = ({ message, articleName, topicQuery }) => {
+  const [topicText, setTopicText] = useState("Topics");
+
+  useEffect(() => {
+    if (topicQuery) {
+      const topicTextCap = topicQuery[0].toUpperCase() + topicQuery.slice(1);
+      setTopicText(topicTextCap);
+    }
+  }, [topicQuery]);
+
   const checkHeaderText = (message) => {
     if (message === "home") {
       return "NC Newz";
@@ -12,6 +22,8 @@ const HeroMessage = ({ message, articleName }) => {
       return "Topics";
     } else if (message === "users") {
       return "Users";
+    } else if (message === "topicPage") {
+      return topicText;
     }
   };
 
@@ -26,6 +38,8 @@ const HeroMessage = ({ message, articleName }) => {
       return "All the topics you could ever want";
     } else if (message === "users") {
       return "Pick a user to become";
+    } else if (message === "topicPage") {
+      return "All the news on this topic";
     }
   };
 

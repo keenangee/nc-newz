@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import * as api from "../utils/api";
 
 const TopicsCard = () => {
@@ -15,15 +16,14 @@ const TopicsCard = () => {
       <ul>
         {topics.map((topic) => {
           return (
-            <li
-              key={topic.slug}
-              className="p-6 border-2 border-dark rounded-xl my-10 hover:bg-light"
-            >
-              <h3 className="text-2xl text-primary underline pb-4">
-                {topic.slug}
-              </h3>
-              <p>{topic.description}</p>
-            </li>
+            <Link to={`/topics/${topic.slug}`} key={topic.slug}>
+              <li className="p-6 border-2 border-dark rounded-xl my-10 hover:bg-light">
+                <h3 className="text-2xl text-primary underline pb-4">
+                  {topic.slug[0].toUpperCase() + topic.slug.slice(1)}
+                </h3>
+                <p>{topic.description}</p>
+              </li>
+            </Link>
           );
         })}
       </ul>

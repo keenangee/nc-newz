@@ -28,7 +28,11 @@ const UserCard = () => {
           return (
             <li
               key={user.username}
-              className="border border-6 border-primary w-[250px] h-[250px] p-11 flex flex-col justify-center align-center items-center hover:bg-light"
+              className={
+                signedInUser === user.username
+                  ? "border border-6 border-primary w-[250px] h-[250px] p-11 flex flex-col justify-center align-center items-center bg-light"
+                  : " border border-6 border-primary w-[250px] h-[250px] p-11 flex flex-col justify-center align-center items-center hover:bg-light"
+              }
               onClick={(event) => handleUserClick(event, user.username)}
             >
               <img

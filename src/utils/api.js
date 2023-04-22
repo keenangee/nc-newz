@@ -12,6 +12,7 @@ export const getArticles = async ({
   limit,
   p,
 }) => {
+  console.log(topic, sort_by, order, author, limit, p);
   const response = await api.get("/articles", {
     params: {
       topic,
