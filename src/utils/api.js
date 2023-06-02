@@ -12,7 +12,6 @@ export const getArticles = async ({
   limit,
   p,
 }) => {
-  console.log(topic, sort_by, order, author, limit, p);
   const response = await api.get("/articles", {
     params: {
       topic,
@@ -57,10 +56,16 @@ export const getUsers = async () => {
 };
 
 export const postComment = async (article_id, username, body) => {
-  console.log(article_id, username, body);
   const response = await api.post(`/articles/${article_id}/comments`, {
     username,
     body,
+  });
+  return response.data.comment;
+};
+
+export const patchComment = async (comment_id, inc_votes) => {
+  const response = await api.patch(`/comments/${comment_id}`, {
+    inc_votes,
   });
   return response.data.comment;
 };

@@ -23,7 +23,7 @@ const Comments = ({
           setTotalComments={setTotalComments}
         />
       )}
-      <div className="flex flex-col mx-6 text-dark border-4 border-double border-darkest md:w-[94vw]">
+      <div className="flex flex-col mx-6 text-dark border-4 border-double border-darkest shadow-sm shadow-textColor md:w-[94vw]">
         <CommentsCard
           articleId={articleId}
           commentsOpen={commentsOpen}

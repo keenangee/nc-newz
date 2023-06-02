@@ -118,7 +118,7 @@ const SingleArticle = ({ setArticleName }) => {
           onClick={handleComments}
         >
           {totalComments === 0
-            ? "Add first comment" //functionality to come
+            ? "Add first comment"
             : commentsOpen
             ? `Hide Comments`
             : `Comments: ${totalComments}`}

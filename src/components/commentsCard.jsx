@@ -2,6 +2,7 @@ import { formatDate } from "../utils/utils";
 import { useEffect, useState } from "react";
 import * as api from "../utils/api";
 import { loading } from "../utils/utils";
+import CommentVotes from "./commentVotes";
 
 const CommentsCard = ({
   articleId,
@@ -12,6 +13,11 @@ const CommentsCard = ({
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [limit, setLimit] = useState(5);
+  const [votesOpen, setVotesOpen] = useState(false);
+  const [votesId, setVotesId] = useState([]);
+  const [votes, setVotes] = useState(0);
+  const [showThumbsUp, setShowThumbsUp] = useState(false);
+  const [showThumbsDown, setShowThumbsDown] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
@@ -33,8 +39,36 @@ const CommentsCard = ({
     setIsLoading(false);
   };
 
+  const handleVotes = (comment_id) => {
+    setVotesOpen((currVotesOpen) => !currVotesOpen);
+    setVotesId(comment_id);
+  };
+
   return (
     <>
+      {votesOpen && (
+        <CommentVotes
+          setVotesOpen={setVotesOpen}
+          setVotes={setVotes}
+          votesId={votesId}
+          setShowThumbsUp={setShowThumbsUp}
+          setShowThumbsDown={setShowThumbsDown}
+        />
+      )}
+      {showThumbsUp && (
+        <div className="fixed top-0 left-0 bottom-0 right-0 flex items-center justify-center select-none">
+          <span className="inline-flex items-center justify-center h-[350px] w-[350px] rounded-full bg-lightest border-8 border-primary text-[200px]">
+            👍
+          </span>
+        </div>
+      )}
+      {showThumbsDown && (
+        <div className="fixed top-0 left-0 bottom-0 right-0 flex items-center justify-center select-none">
+          <span className="inline-flex items-center justify-center h-[350px] w-[350px] rounded-full bg-lightest border-8 border-primary text-[200px]">
+            👎
+          </span>
+        </div>
+      )}
       <div>
         <div className="p-6">
           <h3 className="text-center text-primary font-bold text-xl underline pb-5">
@@ -54,8 +88,12 @@ const CommentsCard = ({
                   </header>
                   <p>{comment.body}</p>
                   <div>
-                    <button className=" bg-light hover:bg-dark hover:text-textColor px-4 py-2 border-s-5 border-primary border-2 rounded-lg text-center mt-3">
-                      votes: {comment.votes}
+                    <button
+                      className=" bg-light hover:bg-dark hover:text-textColor px-4 py-2 border-s-5 border-primary border-2 rounded-lg text-center mt-3"
+                      onClick={() => handleVotes(comment.comment_id)}
+                    >
+                      votes:{" "}
+                      {comment.comment_id === votesId ? votes : comment.votes}
                     </button>
                   </div>
                   <br />
