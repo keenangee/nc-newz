@@ -7,7 +7,7 @@ const ArticleCard = ({ articles, isLoading, warmingUp }) => {
     <div>
       {isLoading && loading()}
       {warmingUp && isLoading && (
-        <div className="text-center text-primary font-bold text-2xl">
+        <div className="text-center text-darkest font-bold text-2xl pt-6">
           Please wait while we warm up the api server...
         </div>
       )}
