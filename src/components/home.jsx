@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import Articles from "./articles";
 
-const Home = ({ articles, isLoading, setQueries }) => {
+const Home = ({ articles, isLoading, warmingUp, setQueries }) => {
   useEffect(() => {
     setQueries({ sort_by: "created_at", limit: 4, order: "desc" });
   }, [setQueries]);
@@ -14,6 +14,7 @@ const Home = ({ articles, isLoading, setQueries }) => {
       <Articles
         articles={articles}
         isLoading={isLoading}
+        warmingUp={warmingUp}
         setQueries={setQueries}
       />
       <div className="text-center pt-20">

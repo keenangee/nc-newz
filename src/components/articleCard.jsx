@@ -2,10 +2,15 @@ import { Link } from "react-router-dom";
 import { formatDate } from "../utils/utils";
 import { loading } from "../utils/utils";
 
-const ArticleCard = ({ articles, isLoading }) => {
+const ArticleCard = ({ articles, isLoading, warmingUp }) => {
   return (
     <div>
       {isLoading && loading()}
+      {warmingUp && isLoading && (
+        <div className="text-center text-primary font-bold text-2xl">
+          Please wait while we warm up the api server...
+        </div>
+      )}
       <ul>
         {articles.map((article) => {
           return (

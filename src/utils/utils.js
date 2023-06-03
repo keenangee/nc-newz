@@ -13,7 +13,7 @@ export const formatDate = (articleDate) => {
 
 export const loading = () => {
   return (
-    <div className="flex flex-row justify-center align-middle">
+    <div className="flex flex-row justify-center align-middle pt-[15vh]">
       <RotatingLines
         strokeColor="grey"
         strokeWidth="5"

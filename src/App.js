@@ -17,6 +17,7 @@ import TopicPage from "./components/topicPage";
 function App() {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [warmingUp, setWarmingUp] = useState(false);
   const [articleName, setArticleName] = useState("");
   const [page, setPage] = useState(1);
   const [maxPage, setMaxPage] = useState(1);
@@ -31,12 +32,20 @@ function App() {
   });
 
   useEffect(() => {
+    startTimer();
     api.getArticles(queries).then((articlesFromApi) => {
       setArticles(articlesFromApi.articles);
       setMaxPage(Math.ceil(articlesFromApi.total_count / 10));
       setIsLoading(false);
+      setWarmingUp(false);
     });
   }, [queries]);
+
+  const startTimer = () => {
+    setTimeout(() => {
+      setWarmingUp(true);
+    }, 5000);
+  };
 
   return (
     <>
@@ -50,6 +59,7 @@ function App() {
               <Home
                 articles={articles}
                 isLoading={isLoading}
+                warmingUp={warmingUp}
                 setQueries={setQueries}
               />
             </>
@@ -64,6 +74,7 @@ function App() {
               <Articles
                 articles={articles}
                 isLoading={isLoading}
+                warmingUp={warmingUp}
                 setQueries={setQueries}
                 page={page}
               />
