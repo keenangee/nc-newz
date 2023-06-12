@@ -1,6 +1,40 @@
-# Getting Started with Create React App
+# NC Newz
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Check out the live site [here](https://newz-nc.netlify.app/).
+
+## About
+
+This project encompasses a news application that I developed, leveraging a custom API, and allows users to view articles, comment on them, and vote on them. The application is constructed using React, accompanied by Tailwind CSS for seamless styling. Hosting-wise, the application is deployed on Netlify, while the API resides on Render. You can check out the API [here](https://github.com/keenangee/be-nc-news).
+
+## To view the project locally follow these steps:
+
+1. Fork and clone this repository with the following command:
+
+```bash
+git clone https://github.com/keenangee/nc-newz
+```
+
+2. Navigate into the project directory:
+
+```bash
+cd nc-newz
+```
+
+3. Install the dependencies:
+
+```bash
+npm install
+```
+
+4. Run the application:
+
+```bash
+npm start
+```
+
+5. Open the application in your browser at http://localhost:3000.
+
+---
 
 ## Available Scripts
 
